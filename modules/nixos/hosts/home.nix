@@ -45,5 +45,6 @@
     nixVersions.latest
     just
     nix-output-monitor
+    nh
   ];
 }
