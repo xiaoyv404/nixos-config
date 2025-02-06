@@ -17,7 +17,19 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  virtualisation.vmware.guest.enable = true;
 
+  fileSystems."/mnt/vm-shares" = {
+    fsType = "fuse./run/current-system/sw/bin/vmhgfs-fuse";
+    device = ".host:/";
+    options = [
+      "allow_other"
+      "auto_unmount"
+      "uid=1000"
+      "gid=100"
+      "defaults"
+    ];
+  };
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/ba07592f-f7d8-471e-a85f-00d274fb2c5a";
     fsType = "btrfs";
