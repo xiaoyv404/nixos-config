@@ -70,6 +70,11 @@
     pulse.enable = true;
   };
 
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     yubikey-personalization
     inputs.alejandra.defaultPackage.x86_64-linux
