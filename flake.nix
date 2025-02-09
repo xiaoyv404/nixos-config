@@ -38,6 +38,9 @@
           pkgs = import nixpkgs {inherit system;};
         }
     );
+    packages = forAllSystems (
+      system: nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system}
+    );
     nixosConfigurations = {
       nixos-vm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
