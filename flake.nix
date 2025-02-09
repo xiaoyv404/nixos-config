@@ -30,6 +30,13 @@
     inherit (self) outputs;
   in {
     modules = import ./modules;
+    legacyPackages = forAllSystems (
+      system:
+        import ./packages {
+          inherit inputs outputs;
+          pkgs = import nixpkgs {inherit system;};
+        }
+    );
     nixosConfigurations = {
       nixos-vm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

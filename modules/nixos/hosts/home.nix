@@ -46,6 +46,5 @@
     just
     nix-output-monitor
     nh
-    fzf
   ];
 }
