@@ -28,6 +28,7 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
+    forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
   in {
     modules = import ./modules;
     legacyPackages = forAllSystems (
