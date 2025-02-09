@@ -4,11 +4,9 @@
   lib,
   outputs,
   ...
-}:
-let
+}: let
   cfg = config.modules.home-manager.fish;
-in
-{
+in {
   options.modules.home-manager.fish = {
     defaultShell = lib.mkEnableOption "Set fish as default shell.";
     wezrs.enable = lib.mkEnableOption "Enable support of Zmodem file transefer protocol for wezTerm.";
@@ -35,7 +33,6 @@ in
             name = "tide";
             src = pkgs.fishPlugins.tide.src;
           }
-
         ]
         ++ lib.optional cfg.wezrs.enable {
           name = "wezrs";
@@ -111,7 +108,7 @@ in
         set -U tide_kubectl_icon \U000f10fe
         set -U tide_left_prompt_frame_enabled false
         set -U tide_left_prompt_items context pwd git newline character
-        set -U tide_left_prompt_prefix 
+        set -U tide_left_prompt_prefix
         set -U tide_left_prompt_separator_diff_color \x20
         set -U tide_left_prompt_separator_same_color \x20
         set -U tide_left_prompt_suffix \x20
@@ -210,8 +207,7 @@ in
     };
 
     home.packages = lib.optionals cfg.wezrs.enable (
-      with pkgs;
-      [
+      with pkgs; [
         self-defined.trzsz-go
         jq
       ]
@@ -220,6 +216,20 @@ in
     # run fish when start bash interactively
     programs.bash = lib.mkIf cfg.defaultShell {
       enable = true;
+      enableCompletion = true;
+
+      bashrcExtra = ''
+              # A few aliases for exa, a ls replacement
+        alias l="exa --sort Name"
+        alias ll="exa --sort Name --long"
+        alias la="exa --sort Name --long --all"
+        alias lr="exa --sort Name --long --recurse"
+        alias lra="exa --sort Name --long --recurse --all"
+        alias lt="exa --sort Name --long --tree"
+        alias lta="exa --sort Name --long --tree --all"
+
+        alias ls="exa --sort Name"
+      '';
       initExtra = ''
         if [[ -z ''${NO_FISH} && -z ''${BASH_EXECUTION_STRING} ]]
         then
