@@ -1,4 +1,13 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  outputs,
+  lib,
+  ...
+}: {
+  imports = [
+    outputs.modules.home-manager.fish
+  ];
+
   home.username = "xiaoyv";
   home.homeDirectory = "/home/xiaoyv";
 
@@ -49,6 +58,9 @@
     pciutils # lspci
     usbutils # lsusb
   ];
+
+  modules.home-manager.fish.defaultShell = lib.mkDefault true;
+  modules.home-manager.fish.wezrs.enable = lib.mkDefault true;
 
   programs.git = {
     enable = true;
