@@ -209,7 +209,7 @@ in {
       enableCompletion = true;
 
       bashrcExtra = ''
-              # A few aliases for exa, a ls replacement
+        # A few aliases for exa, a ls replacement
         alias l="exa --sort Name"
         alias ll="exa --sort Name --long"
         alias la="exa --sort Name --long --all"
