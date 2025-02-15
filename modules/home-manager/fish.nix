@@ -13,31 +13,22 @@ in {
   };
 
   config = {
-    nixpkgs.overlays = [
-      outputs.overlays.self-defined-packages
-    ];
-
     programs.fish = {
       enable = true;
-      plugins =
-        [
-          {
-            name = "z";
-            src = pkgs.fishPlugins.z.src;
-          }
-          {
-            name = "fzf-fish";
-            src = pkgs.fishPlugins.fzf-fish.src;
-          }
-          {
-            name = "tide";
-            src = pkgs.fishPlugins.tide.src;
-          }
-        ]
-        ++ lib.optional cfg.wezrs.enable {
-          name = "wezrs";
-          src = pkgs.self-defined.fishPlugins.wezrs.out;
-        };
+      plugins = [
+        {
+          name = "z";
+          src = pkgs.fishPlugins.z.src;
+        }
+        {
+          name = "fzf-fish";
+          src = pkgs.fishPlugins.fzf-fish.src;
+        }
+        {
+          name = "tide";
+          src = pkgs.fishPlugins.tide.src;
+        }
+      ];
       interactiveShellInit = ''
         set -U tide_aws_bg_color normal
         set -U tide_aws_color FF9900
@@ -208,7 +199,6 @@ in {
 
     home.packages = lib.optionals cfg.wezrs.enable (
       with pkgs; [
-        self-defined.trzsz-go
         jq
       ]
     );
