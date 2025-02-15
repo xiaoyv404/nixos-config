@@ -196,6 +196,12 @@ in {
         "--marker=\"*\""
       ];
     };
+    programs.bat = {
+      enable = true;
+    };
+    programs.fd = {
+      enable = true;
+    };
 
     home.packages = lib.optionals cfg.wezrs.enable (
       with pkgs; [
