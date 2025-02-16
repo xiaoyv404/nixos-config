@@ -7,6 +7,7 @@
   imports = [
     outputs.modules.home-manager.users.xiaoyv
   ];
+  home.homeDirectory = lib.mkForce "/home/xiaoyv";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
