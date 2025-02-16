@@ -41,6 +41,17 @@
           ./hosts/nixos-vm
         ];
       };
+      nixos-mini = {
+        nixos-mini = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/nixos-mini
+          ];
+        };
+      };
     };
   };
 }
