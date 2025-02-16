@@ -57,4 +57,9 @@
   programs.ssh.extraConfig = ''
     Include /opt/orbstack-guest/etc/ssh_config
   '';
+
+  nix.settings.extra-platforms = [
+    "x86_64-linux"
+    "i686-linux"
+  ];
 }
