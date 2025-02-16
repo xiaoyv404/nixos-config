@@ -33,6 +33,7 @@
     isSystemUser = true;
     group = "users";
     homeMode = "700";
+    isNormalUser = lib.mkForce false;
   };
   # This being `true` leads to a few nasty bugs, change at your own risk!
   users.mutableUsers = false;
