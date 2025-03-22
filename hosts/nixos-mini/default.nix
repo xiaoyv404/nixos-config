@@ -40,9 +40,9 @@
 
   networking = {
     hostName = "nixos-mini";
-    dhcpcd.enable = false;
-    useDHCP = false;
-    useHostResolvConf = false;
+    # dhcpcd.enable = false;
+    # useDHCP = false;
+    # useHostResolvConf = false;
   };
   systemd.network = {
     enable = true;
@@ -119,5 +119,5 @@
 
     ''
   ];
-  system.stateVersion = "25.05";
+  system.stateVersion = "24.11";
 }
