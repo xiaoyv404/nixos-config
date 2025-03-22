@@ -27,12 +27,12 @@
     }
   ];
 
-  users.users.xiaoyv = {
-    uid = 1001;
-    isNormalUser = true;
-    group = "users";
-    homeMode = "700";
-  };
+  # users.users.xiaoyv = {
+  #   uid = 1001;
+  #   isNormalUser = true;
+  #   group = "users";
+  #   homeMode = "700";
+  # };
   # This being `true` leads to a few nasty bugs, change at your own risk!
   users.mutableUsers = false;
 
