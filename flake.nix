@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/unstable";
+      url = "github:nix-community/home-manager/24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     vscode-server.url = "github:nix-community/nixos-vscode-server";
