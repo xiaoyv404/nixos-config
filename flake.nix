@@ -30,6 +30,7 @@
     inherit (self) outputs;
     forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
   in {
+    overlays = import ./overlays {inherit inputs outputs;};
     modules = import ./modules;
     legacyPackages = forAllSystems (
       system:

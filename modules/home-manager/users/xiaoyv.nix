@@ -8,10 +8,15 @@
     outputs.modules.home-manager.fish
   ];
 
+  nixpkgs.overlays = [
+    outputs.overlays.self-defined-packages
+  ];
+
   home.username = "xiaoyv";
   home.homeDirectory = "/home/xiaoyv";
 
   home.packages = with pkgs; [
+    self-defined.neovim
     neofetch
 
     # archives
