@@ -17,8 +17,13 @@
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nixvim";
+      inputs.home-manager.follows = "home-manager";
+    };
+    nvix = {
+      url = "github:krishukr/nvix";
+      inputs.nixvim.follows = "nixvim";
+      inputs.flake-parts.follows = "nixvim/flake-parts";
     };
   };
 
@@ -42,6 +47,7 @@
     packages = forAllSystems (
       system: nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system}
     );
+
     nixosConfigurations = {
       nixos-vm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
