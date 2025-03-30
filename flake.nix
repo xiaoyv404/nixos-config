@@ -16,10 +16,8 @@
     alejandra.url = "github:kamadorueda/alejandra/3.1.0";
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.home-manager.follows = "home-manager";
-    };
+    nixvim.url = "github:nix-community/nixvim";
+
     nvix = {
       url = "github:krishukr/nvix";
       inputs.nixvim.follows = "nixvim";
