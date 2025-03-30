@@ -12,7 +12,6 @@
   imports = [
     outputs.modules.nixos.hosts.home
     outputs.modules.nixos.users.xiaoyv
-    outputs.modules.nixvim
 
     ./hardware-configuration.nix
 

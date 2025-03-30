@@ -42,6 +42,11 @@
     openFirewall = true;
   };
 
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+  };
+
   programs.git.enable = true;
 
   environment.systemPackages = with pkgs; [

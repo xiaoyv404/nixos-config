@@ -12,7 +12,6 @@
     "${modulesPath}/virtualisation/lxc-container.nix"
     outputs.modules.nixos.hosts.home
     outputs.modules.nixos.users.xiaoyv
-    outputs.modules.nixvim
 
     ./orbstack.nix
 
