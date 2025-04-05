@@ -12,6 +12,7 @@
   imports = [
     outputs.modules.nixos.hosts.home
     outputs.modules.nixos.users.xiaoyv
+    outputs.modules.programs.icalingua-plus-plus
 
     ./hardware-configuration.nix
 
@@ -78,6 +79,10 @@
     yubikey-personalization
     inputs.alejandra.defaultPackage.x86_64-linux
   ];
+
+  programs.icalingua-plus-plus = {
+    enable = true;
+  };
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }
