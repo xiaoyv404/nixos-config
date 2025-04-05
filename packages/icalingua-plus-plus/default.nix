@@ -1,50 +1,56 @@
 {
   lib,
-  fetchFromGitHub,
-  electron,
-  pnpm_8,
   stdenv,
-  nodejs,
-}:
-stdenv.mkDerivation rec {
-  pname = "icalingua-plus-plus";
-  version = "2.12.28";
-  src = fetchFromGitHub {
-    owner = "xiaoyv404";
-    repo = "Icalingua-plus-plus";
-    rev = "b9db13135ec6efc4748aa543113fdec9eefe9f93";
-    hash = "sha256-VaNmfjTGSOJrX4mhhMAeEflmGVwJyijvdBXXA2/Wtf0=";
+  fetchurl,
+  electron,
+  dpkg,
+  makeWrapper,
+}: let
+  sources = import ./sources.nix;
+  version = sources.version;
+  srcs = {
+    x86_64-linux = fetchurl {
+      url = "https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v${version}/icalingua_${version}_amd64.deb";
+      hash = sources.x86_64-hash;
+    };
+    aarch64-linux = fetchurl {
+      url = "https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v${version}/icalingua_${version}_arm64.deb";
+      hash = sources.arm64-hash;
+    };
   };
+  src =
+    srcs.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
+in
+  stdenv.mkDerivation {
+    pname = "icalingua-plus-plus";
+    inherit src version;
 
-  nativeBuildInputs = [
-    electron
-    pnpm_8.configHook
-    nodejs
-  ];
+    nativeBuildInputs = [
+      makeWrapper
+      dpkg
+    ];
 
-  pnpmWorkspaces = [""];
-  pnpmDeps = pnpm_8.fetchDeps {
-    inherit pname version src pnpmWorkspaces;
-    hash = "sha256-h4foQGQOjQzNmw3IoX3IMU9Q5Sxv312s6z/r6j7mCTY=";
-  };
-  env = {
-    ELECTRON_SKIP_BINARY_DOWNLOAD = 1;
-  };
+    installPhase = ''
+      runHook preInstall
 
-  buildPhase = ''
-    runHook preBuild
+      mkdir -p $out/bin
+      cp -r usr/share $out/share
+      sed -i "s|Exec=.*|Exec=$out/bin/icalingua-plus-plus|" $out/share/applications/*.desktop
+      cp -r opt/ $out/opt
+      makeWrapper ${lib.getExe electron} $out/bin/icalingua-plus-plus \
+        --argv0 "icalingua-plus-plus" \
+        --add-flags "$out/opt/Icalingua++/resources/app.asar" \
 
-    pnpm electron install-app-deps
-    pnpm electron --dir -c.extraMetadata.version=${version}
+      runHook postInstall
+    '';
 
-    runHook postBuild
-  '';
+    # passthru.updateScript = ./update.sh;
 
-  meta = with lib; {
-    description = "A Linux client for QQ and more";
-    homepage = "https://github.com/Icalingua-plus-plus/Icalingua-plus-plus";
-    license = licenses.mit;
-    maintainers = with maintainers; [];
-    platforms = platforms.linux;
-  };
-}
+    meta = with lib; {
+      description = "A Linux client for QQ and more";
+      homepage = "https://github.com/Icalingua-plus-plus/Icalingua-plus-plus";
+      license = licenses.mit;
+      maintainers = with maintainers; [];
+      platforms = platforms.linux;
+    };
+  }
