@@ -76,6 +76,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    element-desktop
     yubikey-personalization
     inputs.alejandra.defaultPackage.x86_64-linux
   ];
