@@ -21,6 +21,11 @@
       inputs.nixvim.follows = "nixvim";
       inputs.flake-parts.follows = "nixvim/flake-parts";
     };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

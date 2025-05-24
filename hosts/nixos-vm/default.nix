@@ -49,11 +49,11 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 windowing system.
   services.xserver.enable = true;
 
   services.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+  programs.xwayland.enable = true;
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -84,6 +84,13 @@
   programs.icalingua-plus-plus = {
     enable = true;
   };
+
+  programs.niri = {
+    enable = true;
+  };
+  fonts.packages = with pkgs; [
+      nerd-fonts.fira-code
+  ];
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }
