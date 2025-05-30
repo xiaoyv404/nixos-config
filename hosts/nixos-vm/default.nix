@@ -61,7 +61,6 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
@@ -81,6 +80,7 @@
     inputs.alejandra.defaultPackage.x86_64-linux
   ];
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   programs.icalingua-plus-plus = {
     enable = true;
   };
