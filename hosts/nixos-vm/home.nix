@@ -31,7 +31,8 @@
   programs.alacritty = {
     enable = true;
   };
-  programs.mako = {
+
+  services.mako = {
     enable = true;
   };
   dconf.settings = {

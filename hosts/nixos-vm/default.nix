@@ -8,7 +8,8 @@
   inputs,
   outputs,
   ...
-}: {
+}:
+{
   imports = [
     outputs.modules.nixos.hosts.home
     outputs.modules.nixos.users.xiaoyv
@@ -26,13 +27,16 @@
       home-manager.users.xiaoyv = import ./home.nix;
     }
     inputs.vscode-server.nixosModules.default
-    ({
-      config,
-      pkgs,
-      ...
-    }: {
-      services.vscode-server.enable = true;
-    })
+    (
+      {
+        config,
+        pkgs,
+        ...
+      }:
+      {
+        services.vscode-server.enable = true;
+      }
+    )
   ];
 
   networking = {
@@ -78,6 +82,8 @@
     element-desktop
     yubikey-personalization
     inputs.alejandra.defaultPackage.x86_64-linux
+    nixfmt-rfc-style
+    logseq
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -89,8 +95,23 @@
     enable = true;
   };
   fonts.packages = with pkgs; [
-      nerd-fonts.fira-code
+    nerd-fonts.fira-code
   ];
+
+  i18n = {
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      fcitx5 = {
+        waylandFrontend = true;
+        addons = with pkgs; [
+          fcitx5-rime
+          rime-data
+          fcitx5-gtk
+        ];
+      };
+    };
+  };
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }
