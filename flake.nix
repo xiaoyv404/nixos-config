@@ -28,7 +28,7 @@
     };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
-      follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -73,8 +73,10 @@
           ./hosts/nixos-mini
         ];
       };
-      xiaoyvmacbook-air = nix-darwin.lib.darwinSys {
-        system = "aarch64-linux";
+    };
+    darwinConfigurations = {
+      xiaoyvmacbook-air = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
         specialArgs = {
           inherit inputs outputs;
         };
