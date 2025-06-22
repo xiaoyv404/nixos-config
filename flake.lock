@@ -446,6 +446,9 @@
         "alejandra": "alejandra",
         "home-manager": "home-manager",
         "niri": "niri",
+        "nix-darwin": [
+          "nixpkgs"
+        ],
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "nvix": "nvix",

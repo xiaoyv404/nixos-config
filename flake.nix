@@ -26,11 +26,16 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
+    nix-darwin,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -66,6 +71,15 @@
         };
         modules = [
           ./hosts/nixos-mini
+        ];
+      };
+      xiaoyvmacbook-air = nix-darwin.lib.darwinSys {
+        system = "aarch64-linux";
+        specialArgs = {
+          inherit inputs outputs;
+        };
+        modules = [
+          ./hosts/xiaoyvmacbook-air
         ];
       };
     };
