@@ -57,7 +57,6 @@
 
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-  programs.xwayland.enable = true;
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -84,6 +83,7 @@
     inputs.alejandra.defaultPackage.x86_64-linux
     nixfmt-rfc-style
     logseq
+    xwayland-satellite
   ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
