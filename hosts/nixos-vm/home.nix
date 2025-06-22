@@ -3,7 +3,8 @@
   pkgs,
   outputs,
   ...
-}: {
+}:
+{
   imports = [
     outputs.modules.home-manager.users.xiaoyv
   ];
@@ -38,7 +39,7 @@
   dconf.settings = {
     "org/gnome/mutter/wayland" = {
       xwayland-allow-grabs = true;
-      xwayland-grab-access-rules = ["parsecd"];
+      xwayland-grab-access-rules = [ "parsecd" ];
     };
   };
   # This value determines the Home Manager release that your

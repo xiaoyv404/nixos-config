@@ -3,7 +3,8 @@
   outputs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     outputs.modules.home-manager.fish
   ];

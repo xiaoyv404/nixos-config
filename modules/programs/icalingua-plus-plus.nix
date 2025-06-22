@@ -4,9 +4,11 @@
   lib,
   outputs,
   ...
-}: let
+}:
+let
   cfg = config.programs.icalingua-plus-plus;
-in {
+in
+{
   options = {
     programs.icalingua-plus-plus = {
       enable = lib.mkEnableOption "Enables Icalingua-plus-plus.";
@@ -20,6 +22,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [outputs.legacyPackages.${pkgs.system}.icalingua-plus-plus];
+    environment.systemPackages = [ outputs.legacyPackages.${pkgs.system}.icalingua-plus-plus ];
   };
 }

@@ -6,7 +6,8 @@
   outputs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     # Include the default lxd configuration.
     "${modulesPath}/virtualisation/lxc-container.nix"

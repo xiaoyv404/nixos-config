@@ -7,13 +7,21 @@
   pkgs,
   modulesPath,
   ...
-}: {
-  imports = [];
+}:
+{
+  imports = [ ];
 
-  boot.initrd.availableKernelModules = ["ata_piix" "mptspi" "uhci_hcd" "ehci_pci" "sd_mod" "sr_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = [];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "ata_piix"
+    "mptspi"
+    "uhci_hcd"
+    "ehci_pci"
+    "sd_mod"
+    "sr_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ ];
+  boot.extraModulePackages = [ ];
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -33,29 +41,42 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/ba07592f-f7d8-471e-a85f-00d274fb2c5a";
     fsType = "btrfs";
-    options = ["subvol=root" "compress=zstd"];
+    options = [
+      "subvol=root"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/ba07592f-f7d8-471e-a85f-00d274fb2c5a";
     fsType = "btrfs";
-    options = ["subvol=home" "compress=zstd"];
+    options = [
+      "subvol=home"
+      "compress=zstd"
+    ];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/ba07592f-f7d8-471e-a85f-00d274fb2c5a";
     fsType = "btrfs";
-    options = ["subvol=nix" "compress=zstd" "noatime"];
+    options = [
+      "subvol=nix"
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/8F22-8F5F";
     fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/5fddffe7-84fd-40c6-ac51-7f472db6748f";}
+    { device = "/dev/disk/by-uuid/5fddffe7-84fd-40c6-ac51-7f472db6748f"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

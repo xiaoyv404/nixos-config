@@ -32,58 +32,61 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nix-darwin,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
-  in {
-    overlays = import ./overlays {inherit inputs outputs;};
-    modules = import ./modules;
-    legacyPackages = forAllSystems (
-      system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nix-darwin,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
+      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
+    in
+    {
+      overlays = import ./overlays { inherit inputs outputs; };
+      modules = import ./modules;
+      legacyPackages = forAllSystems (
+        system:
         import ./packages {
           inherit inputs outputs;
-          pkgs = import nixpkgs {inherit system;};
+          pkgs = import nixpkgs { inherit system; };
         }
-    );
-    packages = forAllSystems (
-      system: nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system}
-    );
+      );
+      packages = forAllSystems (
+        system: nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system}
+      );
 
-    nixosConfigurations = {
-      nixos-vm = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs outputs;
+      nixosConfigurations = {
+        nixos-vm = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/nixos-vm
+          ];
         };
-        modules = [
-          ./hosts/nixos-vm
-        ];
+        nixos-mini = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/nixos-mini
+          ];
+        };
       };
-      nixos-mini = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
-        specialArgs = {
-          inherit inputs outputs;
+      darwinConfigurations = {
+        xiaoyvmacbook-air = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/xiaoyvmacbook-air
+          ];
         };
-        modules = [
-          ./hosts/nixos-mini
-        ];
       };
     };
-    darwinConfigurations = {
-      xiaoyvmacbook-air = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {
-          inherit inputs outputs;
-        };
-        modules = [
-          ./hosts/xiaoyvmacbook-air
-        ];
-      };
-    };
-  };
 }

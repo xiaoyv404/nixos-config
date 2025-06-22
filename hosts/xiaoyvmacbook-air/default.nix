@@ -1,11 +1,13 @@
 {
-    config,
-    lib,
-    outputs,
-    inputs,
-    ...
-}:{
-            system.stateVersion = 6;
+  config,
+  lib,
+  outputs,
+  inputs,
+  pkgs,
+  ...
+}:
+{
+  system.stateVersion = 6;
   nix = {
     settings = {
       substituters = [
@@ -27,4 +29,15 @@
     registry.nixpkgs.flake = inputs.nixpkgs;
     channel.enable = false;
   };
+
+  environment.systemPackages = with pkgs; [
+    neovim
+    git
+    nixVersions.latest
+    just
+    nix-output-monitor
+    nh
+    nixfmt-rfc-style
+  ];
+
 }

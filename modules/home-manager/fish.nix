@@ -4,9 +4,11 @@
   lib,
   outputs,
   ...
-}: let
+}:
+let
   cfg = config.modules.home-manager.fish;
-in {
+in
+{
   options.modules.home-manager.fish = {
     defaultShell = lib.mkEnableOption "Set fish as default shell.";
     wezrs.enable = lib.mkEnableOption "Enable support of Zmodem file transefer protocol for wezTerm.";
@@ -204,7 +206,8 @@ in {
     };
 
     home.packages = lib.optionals cfg.wezrs.enable (
-      with pkgs; [
+      with pkgs;
+      [
         jq
       ]
     );

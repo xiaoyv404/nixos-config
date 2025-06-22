@@ -5,7 +5,8 @@
   electron,
   dpkg,
   makeWrapper,
-}: let
+}:
+let
   sources = import ./sources.nix;
   version = sources.version;
   srcs = {
@@ -21,36 +22,36 @@
   src =
     srcs.${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
 in
-  stdenv.mkDerivation {
-    pname = "icalingua-plus-plus";
-    inherit src version;
+stdenv.mkDerivation {
+  pname = "icalingua-plus-plus";
+  inherit src version;
 
-    nativeBuildInputs = [
-      makeWrapper
-      dpkg
-    ];
+  nativeBuildInputs = [
+    makeWrapper
+    dpkg
+  ];
 
-    installPhase = ''
-      runHook preInstall
+  installPhase = ''
+    runHook preInstall
 
-      mkdir -p $out/bin
-      cp -r usr/share $out/share
-      sed -i "s|Exec=.*|Exec=$out/bin/icalingua-plus-plus|" $out/share/applications/*.desktop
-      cp -r opt/ $out/opt
-      makeWrapper ${lib.getExe electron} $out/bin/icalingua-plus-plus \
-        --argv0 "icalingua-plus-plus" \
-        --add-flags "$out/opt/Icalingua++/resources/app.asar" \
+    mkdir -p $out/bin
+    cp -r usr/share $out/share
+    sed -i "s|Exec=.*|Exec=$out/bin/icalingua-plus-plus|" $out/share/applications/*.desktop
+    cp -r opt/ $out/opt
+    makeWrapper ${lib.getExe electron} $out/bin/icalingua-plus-plus \
+      --argv0 "icalingua-plus-plus" \
+      --add-flags "$out/opt/Icalingua++/resources/app.asar" \
 
-      runHook postInstall
-    '';
+    runHook postInstall
+  '';
 
-    # passthru.updateScript = ./update.sh;
+  # passthru.updateScript = ./update.sh;
 
-    meta = with lib; {
-      description = "A Linux client for QQ and more";
-      homepage = "https://github.com/Icalingua-plus-plus/Icalingua-plus-plus";
-      license = licenses.mit;
-      maintainers = with maintainers; [];
-      platforms = platforms.linux;
-    };
-  }
+  meta = with lib; {
+    description = "A Linux client for QQ and more";
+    homepage = "https://github.com/Icalingua-plus-plus/Icalingua-plus-plus";
+    license = licenses.mit;
+    maintainers = with maintainers; [ ];
+    platforms = platforms.linux;
+  };
+}

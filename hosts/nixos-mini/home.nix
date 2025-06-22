@@ -4,7 +4,8 @@
   outputs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     outputs.modules.home-manager.users.xiaoyv
   ];
