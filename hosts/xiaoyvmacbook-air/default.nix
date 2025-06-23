@@ -7,6 +7,20 @@
   ...
 }:
 {
+  imports = [
+    inputs.home-manager.darwinModules.home-manager
+    {
+      # home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.extraSpecialArgs = {
+        inherit inputs outputs;
+      };
+      home-manager.users.xiaoyv = import ./home.nix;
+    }
+  ];
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+  ];
   system.stateVersion = 6;
   nix = {
     settings = {
@@ -38,6 +52,7 @@
     nix-output-monitor
     nh
     nixfmt-rfc-style
+    alacritty
   ];
 
 }
