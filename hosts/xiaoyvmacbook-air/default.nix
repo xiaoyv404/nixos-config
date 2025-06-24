@@ -43,6 +43,14 @@
     registry.nixpkgs.flake = inputs.nixpkgs;
     channel.enable = false;
   };
+  users = {
+    knownUsers = [ "xiaoyv" ];
+    users.xiaoyv = {
+      uid = 501;
+      shell = pkgs.fish;
+    };
+  };
+  programs.fish.enable = true;
 
   environment.systemPackages = with pkgs; [
     neovim

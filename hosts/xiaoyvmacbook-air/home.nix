@@ -9,9 +9,9 @@
   imports = [
     outputs.modules.home-manager.users.xiaoyv
   ];
-#   programs.alacritty = {
-#     enable = true;
-#   };
+  programs.alacritty = {
+    enable = true;
+  };
   home = {
     stateVersion = "25.05";
     username = "xiaoyv";
