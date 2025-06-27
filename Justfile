@@ -1,13 +1,15 @@
 hostname := `hostname`
+os_name := `uname -s`
+platformSubcommand := if os_name == "Darwin" { "darwin" } else { "os" }
 
 switch target=hostname:
-  nh os switch --hostname {{hostname}} --ask .
+  nh {{platformSubcommand}} switch --hostname {{hostname}} --ask .
 
 debug target=hostname:
-  nh os switch --hostname {{hostname}} --ask --verbose .
+  nh {{platformSubcommand}} switch --hostname {{hostname}} --ask --verbose .
 
 boot target=hostname:
-  nh os boot --hostname {{hostname}} --ask .
+  nh {{platformSubcommand}} boot --hostname {{hostname}} --ask .
 
 test target='.':
   sudo nixos-rebuild --flake {{target}} --show-trace -L -v dry-build |& nom

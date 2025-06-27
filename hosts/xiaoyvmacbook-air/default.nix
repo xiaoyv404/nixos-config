@@ -63,6 +63,7 @@
     nixfmt-rfc-style
     alacritty
     zulu17
+    zulu21
   ];
 
   security = {

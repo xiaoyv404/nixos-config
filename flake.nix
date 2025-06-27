@@ -50,7 +50,10 @@
         system:
         import ./packages {
           inherit inputs outputs;
-          pkgs = import nixpkgs { inherit system; };
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
         }
       );
       packages = forAllSystems (
@@ -84,6 +87,12 @@
             inherit inputs outputs;
           };
           modules = [
+            (
+              { config, ... }:
+              {
+                nixpkgs.config.allowUnfree = true;
+              }
+            )
             ./hosts/xiaoyvmacbook-air
           ];
         };
