@@ -17,6 +17,7 @@
       };
       home-manager.users.xiaoyv = import ./home.nix;
     }
+    outputs.modules.base.ca
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
@@ -64,5 +65,7 @@
     zulu17
   ];
 
-  security.pam.services.sudo_local.touchIdAuth = true;
+  security = {
+    pam.services.sudo_local.touchIdAuth = true;
+  };
 }

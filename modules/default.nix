@@ -4,4 +4,5 @@
   neovim = import ./neovim;
   programs = import ./programs;
 #  darwin = import ./darwin;
+  base = import ./base;
 }
