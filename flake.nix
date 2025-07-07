@@ -70,15 +70,6 @@
             ./hosts/nixos-vm
           ];
         };
-        nixos-mini = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          specialArgs = {
-            inherit inputs outputs;
-          };
-          modules = [
-            ./hosts/nixos-mini
-          ];
-        };
       };
       darwinConfigurations = {
         xiaoyvmacbook-air = nix-darwin.lib.darwinSystem {
@@ -95,6 +86,15 @@
             )
             ./hosts/xiaoyvmacbook-air
           ];
+        };
+        xiaoyvmac-mini = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/xiaoyvmac-mini/
+          ]
         };
       };
     };
