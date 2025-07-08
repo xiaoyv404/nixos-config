@@ -94,7 +94,7 @@
           };
           modules = [
             ./hosts/xiaoyvmac-mini
-          ]
+          ];
         };
       };
     };
