@@ -93,7 +93,7 @@
             inherit inputs outputs;
           };
           modules = [
-            ./hosts/xiaoyvmac-mini/
+            ./hosts/xiaoyvmac-mini
           ]
         };
       };
