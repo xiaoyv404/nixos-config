@@ -65,4 +65,8 @@
     zulu17
     zulu21
   ];
+  power.sleep = {
+    computer = "never";
+    harddisk = "never";
+  };
 }
