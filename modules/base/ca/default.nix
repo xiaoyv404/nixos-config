@@ -1,5 +1,5 @@
 {
-    security.pki.certificateFiles = [
-        ./MCGCa.crt
-    ];
+  security.pki.certificateFiles = [
+    ./MCGCa.crt
+  ];
 }

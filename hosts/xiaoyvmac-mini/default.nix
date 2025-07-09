@@ -17,12 +17,23 @@
       };
       home-manager.users.xiaoyv = import ./home.nix;
     }
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+    {
+      nix-homebrew = {
+        enable = true;
+        enableRosetta = true;
+        user = "xiaoyv";
+      };
+    }
     outputs.modules.base.ca
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
   ];
-  system.stateVersion = 6;
+  system = {
+    stateVersion = 6;
+    primaryUser = "xiaoyv";
+  };
   nix = {
     settings = {
       substituters = [
@@ -68,5 +79,14 @@
   power.sleep = {
     computer = "never";
     harddisk = "never";
+  };
+  homebrew = {
+    enable = true;
+    brews = [
+      "zstd"
+    ];
+    casks = [
+      "orbstack"
+    ];
   };
 }

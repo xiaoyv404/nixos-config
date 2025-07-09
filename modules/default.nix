@@ -3,6 +3,6 @@
   home-manager = import ./home-manager;
   neovim = import ./neovim;
   programs = import ./programs;
-#  darwin = import ./darwin;
+  #  darwin = import ./darwin;
   base = import ./base;
 }
