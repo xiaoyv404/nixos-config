@@ -17,13 +17,26 @@
       };
       home-manager.users.xiaoyv = import ./home.nix;
     }
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+    {
+      nix-homebrew = {
+        enable = true;
+        enableRosetta = true;
+        user = "xiaoyv";
+        autoMigrate = true;
+      };
+    }
     outputs.modules.base.ca
   ];
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
   ];
-  system.stateVersion = 6;
+  system = {
+    stateVersion = 6;
+    primaryUser = "xiaoyv";
+  };
+
   nix = {
     settings = {
       substituters = [
@@ -69,5 +82,22 @@
 
   security = {
     pam.services.sudo_local.touchIdAuth = true;
+  };
+  homebrew = {
+    enable = true;
+    brews = [
+      "zstd"
+    ];
+    casks = [
+      "battery-toolkit"
+      "jordanbaird-ice"
+      "linearmouse"
+      "moonlight"
+      "openinterminal"
+      "pearcleaner"
+      "stats"
+      "visual-studio-code"
+      "maccy"
+    ];
   };
 }
