@@ -75,7 +75,6 @@
     nix-output-monitor
     nh
     nixfmt-rfc-style
-    alacritty
     zulu17
     zulu21
   ];
@@ -98,6 +97,7 @@
       "stats"
       "visual-studio-code"
       "maccy"
+      "wezterm"
     ];
   };
 }
