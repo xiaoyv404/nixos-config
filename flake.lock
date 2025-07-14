@@ -172,6 +172,38 @@
         "type": "github"
       }
     },
+    "homebrew-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752485348,
+        "narHash": "sha256-YegbC86g+d6HUkumV4l6qKdkrxnSBYf4Mjrq/yoyp58=",
+        "ref": "refs/heads/master",
+        "rev": "1d44b72f9403edcaebdf5888e5d05b20c43f5114",
+        "revCount": 326027,
+        "type": "git",
+        "url": "https://mirrors.ustc.edu.cn/homebrew-cask.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://mirrors.ustc.edu.cn/homebrew-cask.git"
+      }
+    },
+    "homebrew-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1752483296,
+        "narHash": "sha256-1bCn2T+YxOLkNTxDaTjKQlVgZoovchSdRuVtyM8TPME=",
+        "ref": "refs/heads/master",
+        "rev": "e0b424cb9aa05ecbf2ce4c7f8f23cedc65875792",
+        "revCount": 649721,
+        "type": "git",
+        "url": "https://mirrors.ustc.edu.cn/homebrew-core.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://mirrors.ustc.edu.cn/homebrew-core.git"
+      }
+    },
     "ixx": {
       "inputs": {
         "flake-utils": [
@@ -501,6 +533,8 @@
       "inputs": {
         "alejandra": "alejandra",
         "home-manager": "home-manager",
+        "homebrew-cask": "homebrew-cask",
+        "homebrew-core": "homebrew-core",
         "niri": "niri",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",

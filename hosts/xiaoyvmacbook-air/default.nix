@@ -24,6 +24,10 @@
         enableRosetta = true;
         user = "xiaoyv";
         autoMigrate = true;
+        taps = {
+          "homebrew/homebrew-core" = inputs.homebrew-core;
+          "homebrew/homebrew-cask" = inputs.homebrew-cask;
+        };
       };
     }
     outputs.modules.base.ca
@@ -75,7 +79,6 @@
     nix-output-monitor
     nh
     nixfmt-rfc-style
-    zulu17
     zulu21
   ];
 
@@ -98,6 +101,7 @@
       "visual-studio-code"
       "maccy"
       "wezterm"
+      "utm"
     ];
   };
 }

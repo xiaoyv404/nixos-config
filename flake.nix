@@ -31,6 +31,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "git+https://mirrors.ustc.edu.cn/homebrew-core.git";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "git+https://mirrors.ustc.edu.cn/homebrew-cask.git";
+      flake = false;
+    };
   };
 
   outputs =

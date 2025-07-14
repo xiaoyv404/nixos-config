@@ -15,5 +15,9 @@
     homeDirectory = lib.mkForce "/Users/xiaoyv";
   };
 
+  programs.lazygit = {
+    enable = true;
+  };
+
   programs.home-manager.enable = true;
 }
