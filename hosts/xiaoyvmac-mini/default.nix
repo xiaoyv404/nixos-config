@@ -23,8 +23,14 @@
         enable = true;
         enableRosetta = true;
         user = "xiaoyv";
+        autoMigrate = true;
+        taps = {
+          "homebrew/homebrew-core" = inputs.homebrew-core;
+          "homebrew/homebrew-cask" = inputs.homebrew-cask;
+        };
       };
     }
+
     outputs.modules.base.ca
   ];
   fonts.packages = with pkgs; [
@@ -87,6 +93,7 @@
     ];
     casks = [
       "orbstack"
+      "utm"
     ];
   };
 }
