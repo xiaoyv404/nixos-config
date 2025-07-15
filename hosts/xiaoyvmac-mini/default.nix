@@ -90,7 +90,6 @@
     enable = true;
     brews = [
       "zstd"
-      "tailscale"
     ];
     casks = [
       "orbstack"
