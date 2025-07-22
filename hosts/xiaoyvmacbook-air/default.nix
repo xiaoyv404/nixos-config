@@ -80,6 +80,7 @@
     nh
     nixfmt-rfc-style
     zulu21
+    hmcl
   ];
 
   security = {
