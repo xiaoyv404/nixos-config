@@ -81,6 +81,7 @@
     nixfmt-rfc-style
     zulu21
     hmcl
+    nixd
   ];
 
   security = {
