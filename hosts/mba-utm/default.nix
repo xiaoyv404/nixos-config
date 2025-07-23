@@ -22,7 +22,12 @@
       home-manager.users.xiaoyv = import ./home.nix;
     }
   ];
-
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
   environment.systemPackages = with pkgs; [
     nix-output-monitor
     nh
