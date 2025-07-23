@@ -28,5 +28,5 @@
     nh
     nixfmt-rfc-style
   ];
-  system.stateVersion = "25.0.5";
+  system.stateVersion = "25.11";
 }
