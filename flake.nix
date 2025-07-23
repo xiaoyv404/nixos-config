@@ -80,6 +80,15 @@
             ./hosts/nixos-vm
           ];
         };
+        mba-utm = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = {
+            inherit inputs outputs;
+          };
+          modules = [
+            ./hosts/mba-utm
+          ];
+        };
       };
       darwinConfigurations = {
         xiaoyvmacbook-air = nix-darwin.lib.darwinSystem {
