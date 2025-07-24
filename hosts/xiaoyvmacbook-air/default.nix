@@ -104,6 +104,7 @@
       "maccy"
       "wezterm"
       "utm"
+      "jetbrains-gateway"
     ];
   };
 }
