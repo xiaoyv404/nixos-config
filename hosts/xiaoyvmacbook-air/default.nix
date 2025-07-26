@@ -82,7 +82,6 @@
     zulu21
     hmcl
     nixd
-    claude-code
   ];
 
   security = {
@@ -106,6 +105,7 @@
       "wezterm"
       "utm"
       "intellij-idea-ce"
+      "rustdesk"
     ];
   };
 }
