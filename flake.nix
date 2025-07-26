@@ -39,6 +39,7 @@
       url = "git+https://mirrors.ustc.edu.cn/homebrew-cask.git";
       flake = false;
     };
+    claude-code.url = "github:sadjow/claude-code-nix";
   };
 
   outputs =

@@ -46,7 +46,9 @@
       substituters = [
         "https://mirrors.ustc.edu.cn/nix-channels/store"
         "https://mirror.sjtu.edu.cn/nix-channels/store"
+        "https://claude-code.cachix.org"
       ];
+      trusted-public-keys = [ "claude-code.cachix.org-1:YeXf2aNu7UTX8Vwrze0za1WEDS+4DuI2kVeWEE4fsRk=" ];
       experimental-features = [
         "nix-command"
         "flakes"
@@ -71,6 +73,7 @@
   };
   programs.fish.enable = true;
 
+  nixpkgs.overlays = [ inputs.claude-code.overlays.default ];
   environment.systemPackages = with pkgs; [
     neovim
     git
@@ -82,6 +85,7 @@
     zulu21
     hmcl
     nixd
+    claude-code
   ];
 
   security = {
