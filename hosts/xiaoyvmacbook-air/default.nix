@@ -110,6 +110,7 @@
       "utm"
       "intellij-idea-ce"
       "rustdesk"
+      "jetbrains-toolbox"
     ];
   };
 }
