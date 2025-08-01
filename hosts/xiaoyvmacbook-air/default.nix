@@ -111,6 +111,7 @@
       "intellij-idea-ce"
       "rustdesk"
       "jetbrains-toolbox"
+      "steam"
     ];
   };
 }
