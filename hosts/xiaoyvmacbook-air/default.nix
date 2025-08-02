@@ -97,7 +97,6 @@
       "zstd"
     ];
     casks = [
-      "battery-toolkit"
       "jordanbaird-ice"
       "linearmouse"
       "moonlight"
