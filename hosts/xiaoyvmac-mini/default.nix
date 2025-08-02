@@ -39,6 +39,7 @@
   system = {
     stateVersion = 6;
     primaryUser = "xiaoyv";
+    defaults.loginwindow.autoLoginUser = "xiaoyv";
   };
   nix = {
     settings = {
