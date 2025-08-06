@@ -111,6 +111,7 @@
       "rustdesk"
       "jetbrains-toolbox"
       "steam"
+      "iina"
     ];
   };
 }
