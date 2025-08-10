@@ -112,6 +112,7 @@
       "jetbrains-toolbox"
       "steam"
       "iina"
+      "buzz"
     ];
   };
 }
