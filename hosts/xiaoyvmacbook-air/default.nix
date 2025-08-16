@@ -82,7 +82,7 @@
     nix-output-monitor
     nh
     nixfmt-rfc-style
-    zulu21
+    zulu11
     hmcl
     nixd
     claude-code
@@ -112,7 +112,7 @@
       "jetbrains-toolbox"
       "steam"
       "iina"
-      "buzz"
+      "logseq"
     ];
   };
 }
