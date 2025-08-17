@@ -113,6 +113,7 @@
       "steam"
       "iina"
       "logseq"
+      "monitorcontrol"
     ];
   };
 }
