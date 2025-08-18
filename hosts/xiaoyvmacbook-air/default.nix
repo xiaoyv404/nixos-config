@@ -82,7 +82,7 @@
     nix-output-monitor
     nh
     nixfmt-rfc-style
-    zulu11
+    zulu21
     hmcl
     nixd
     claude-code
@@ -114,6 +114,7 @@
       "iina"
       "logseq"
       "monitorcontrol"
+      "obs"
     ];
   };
 }
