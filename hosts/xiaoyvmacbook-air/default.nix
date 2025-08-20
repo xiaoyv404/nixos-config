@@ -93,6 +93,7 @@
   };
   homebrew = {
     enable = true;
+    onActivation.cleanup = "zap";
     brews = [
       "zstd"
     ];
