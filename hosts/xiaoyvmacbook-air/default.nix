@@ -115,6 +115,7 @@
       "logseq"
       "monitorcontrol"
       "obs"
+      "yubico-authenticator"
     ];
   };
 }
