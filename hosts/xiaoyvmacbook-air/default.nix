@@ -87,7 +87,6 @@
     nixd
     claude-code
   ];
-
   security = {
     pam.services.sudo_local.touchIdAuth = true;
   };
@@ -118,5 +117,8 @@
       "obs"
       "yubico-authenticator"
     ];
+    masApps = {
+      Xcode = 497799835;
+    };
   };
 }
