@@ -74,7 +74,6 @@
   environment.systemPackages = with pkgs; [
     neovim
     git
-    nixVersions.latest
     just
     nix-output-monitor
     nh

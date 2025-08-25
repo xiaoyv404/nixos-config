@@ -51,7 +51,6 @@
   programs.git.enable = true;
 
   environment.systemPackages = with pkgs; [
-    nixVersions.latest
     just
     nix-output-monitor
     nh
