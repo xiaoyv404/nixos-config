@@ -42,6 +42,7 @@
     defaults.loginwindow.autoLoginUser = "xiaoyv";
   };
   nix = {
+    packages = pkgs.lixPackageSets.stable.lix;
     settings = {
       substituters = [
         "https://mirrors.ustc.edu.cn/nix-channels/store"
